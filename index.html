@@ -3,486 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caja Registradora - Almacén Solomedias Intimas</title>
+    <title>TORNEO GAMERS CUP</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; }
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        body {
+            background-color: #0b0e14;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.8) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(15, 23, 42, 0.8) 2px, transparent 2px),
+                linear-gradient(rgba(15, 23, 42, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 23, 42, 0.3) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .neon-text { text-shadow: 0 0 5px rgba(56, 189, 248, 0.5), 0 0 10px rgba(56, 189, 248, 0.3); }
+        .neon-border { box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); border: 1px solid rgba(56, 189, 248, 0.5); }
+
+        /* Colores Neón Específicos */
+        .neon-red { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); border: 1px solid rgba(239, 68, 68, 0.6); }
+        .neon-blue { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); border: 1px solid rgba(59, 130, 246, 0.6); }
+        .neon-orange { box-shadow: 0 0 15px rgba(249, 115, 22, 0.4); border: 1px solid rgba(249, 115, 22, 0.6); }
+        .neon-green { box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); border: 1px solid rgba(34, 197, 94, 0.6); }
+
+        .click-anim:active { transform: scale(0.95); transition: transform 0.1s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { height: 10px; width: 10px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
     </style>
 </head>
-<body class="bg-slate-50 h-screen flex flex-col overflow-hidden">
+<body>
 
-    <header class="bg-blue-600 text-white p-4 shadow-md flex justify-between items-center z-20">
-        <div class="flex items-center gap-4">
-            <h1 class="text-xl font-bold flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                Caja Registradora
-            </h1>
-            <span id="productCounter" class="bg-blue-800 px-3 py-1 rounded-full text-xs font-medium"></span>
-        </div>
-        <div class="flex gap-2">
-            <button id="btnAddProduct" class="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-1 shadow-sm">+ Añadir Botón</button>
-            <button id="toggleEdit" class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded-lg text-sm font-semibold transition shadow-sm">Configurar Botones</button>
+    <!-- HEADER -->
+    <header class="bg-slate-900 border-b border-sky-500/50 p-6 shadow-lg shadow-sky-900/20 z-10 relative">
+        <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            <h1 class="text-4xl md:text-5xl font-black tracking-widest neon-text uppercase text-center">TORNEO GAMERS CUP</h1>
         </div>
     </header>
 
-    <main class="flex-1 flex overflow-hidden">
-        <div class="flex-1 flex flex-col relative overflow-hidden">
-            <div class="bg-white p-4 shadow-sm border-b border-slate-200 z-10 space-y-3">
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </span>
-                    <input type="text" id="searchBox" placeholder="Buscar producto..." class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50">
-                </div>
-                
-                <div class="flex gap-3 items-center bg-slate-100 p-2 rounded-lg">
-                    <input type="text" id="inputManualName" placeholder="Nombre" class="flex-1 p-2 text-sm border border-slate-300 rounded-lg outline-none">
-                    <input type="number" id="inputManualPrice" placeholder="Precio ($)" class="w-24 p-2 text-sm border border-slate-300 rounded-lg outline-none font-bold">
-                    <div class="flex items-center gap-1 bg-white border border-slate-300 rounded-lg px-2">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase">Cant:</span>
-                        <input type="number" id="inputManualQty" value="1" min="1" class="w-12 p-1 text-sm outline-none font-bold text-blue-600">
-                    </div>
-                    <button id="btnManualAdd" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold text-sm transition shadow-sm">Añadir</button>
-                </div>
-            </div>
-
-            <div class="flex-1 p-6 overflow-y-auto custom-scroll">
-                <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"></div>
-            </div>
-
-            <div class="bg-white p-4 border-t-2 border-slate-200 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-20">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end max-w-6xl mx-auto">
-                    <div class="bg-blue-50 p-2 rounded-lg border border-blue-100">
-                        <p class="text-[10px] font-bold text-blue-400 uppercase mb-1">Total Pendiente</p>
-                        <p class="text-3xl font-black text-blue-600" id="displayTotal">$0</p>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Monto a recibir:</label>
-                        <input type="number" id="inputPago" placeholder="0" class="w-full p-2 border border-slate-300 rounded-lg text-2xl font-bold focus:ring-2 focus:ring-blue-500 outline-none bg-yellow-50">
-                    </div>
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Cambio:</p>
-                        <p class="text-3xl font-black text-green-600" id="displayCambio">$0</p>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <input type="datetime-local" id="manualDateTime" class="w-full p-2 border border-slate-200 rounded text-[10px] bg-slate-50">
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="handlePayment('Efectivo')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-xl text-xs shadow-md">💵 Efectivo</button>
-                            <button onclick="handlePayment('Tarjeta')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-xl text-xs shadow-md">💳 Tarjeta</button>
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto flex flex-col">
+        
+        <div class="max-w-7xl mx-auto w-full pb-10">
+            
+            <!-- INTRODUCCIÓN Y COMUNIDAD -->
+            <div class="bg-slate-900/80 backdrop-blur-sm p-6 md:p-10 rounded-xl neon-border mb-16 text-center shadow-xl">
+                <p class="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-5xl mx-auto font-medium">
+                    Gamers Cup abre inscripciones para sus torneos de <span class="text-red-400 font-bold">Valorant 1 vs 1</span> con premio de 100.000 COP, <span class="text-red-400 font-bold">Valorant por equipos</span> con premio de 200.000 COP, <span class="text-blue-400 font-bold">League of Legends 1 vs 1</span> con premio de 100.000 COP, <span class="text-orange-400 font-bold">Free Fire Battle Royale individual</span> con premio de 80.000 COP y <span class="text-green-400 font-bold">Call of Duty Mobile Battle Royale individual</span> con premio de 80.000 COP, con cupos limitados y transmisión en vivo por Kick y Twitch en SoftJuns.
+                </p>
+                <div class="flex flex-col items-center gap-4">
+                    <p class="text-sky-300 font-bold text-xl uppercase tracking-wider">Únete a nuestra comunidad y contáctanos:</p>
+                    <div class="flex flex-wrap justify-center gap-4 mt-2">
+                        <!-- WhatsApp -->
+                        <a href="https://chat.whatsapp.com/Fsjqm4ap4AbL3NtmtaUwWT" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-[#25D366]/10 border border-[#25D366] text-[#25D366] rounded-full hover:bg-[#25D366]/30 transition-colors font-bold click-anim">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Grupo de WhatsApp
+                        </a>
+                        <!-- Discord -->
+                        <a href="https://discord.gg/g2ZYpNUr" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-[#5865F2]/10 border border-[#5865F2] text-[#5865F2] rounded-full hover:bg-[#5865F2]/30 transition-colors font-bold click-anim">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><path d="M7.5 7.5c3.5-1 5.5-1 9 0"/><path d="M7 16.5c-2.9.5-3 2.5-3 2.5l-.5-1.5c-2.5-.5-3-2.5-3-2.5C2 8 4 5 7 5h10c3 0 5 3 6.5 10 0 0-.5 2-3 2.5l-.5 1.5c0 0-.1-2-3-2.5"/><path d="M15.5 17.5c-3 1-4 1-7 0"/></svg>
+                            Servidor Discord
+                        </a>
+                        <!-- Phone -->
+                        <div class="flex items-center gap-2 px-6 py-3 bg-slate-800 border border-slate-600 text-slate-300 rounded-full font-bold">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Teléfono: 317 493 0900
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 flex flex-col items-center gap-2">
-                    <div class="flex items-center gap-4">
-                        <button id="btnLimpiar" class="bg-red-100 hover:bg-red-600 text-red-600 hover:text-white px-8 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all border border-red-200">❌ Cancelar Venta</button>
+            </div>
+
+            <!-- JUEGOS DEL TORNEO -->
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-px bg-sky-500/50 flex-1"></div>
+                <h2 class="text-3xl font-black uppercase neon-text tracking-wider">Juegos del Torneo</h2>
+                <div class="h-px bg-sky-500/50 flex-1"></div>
+            </div>
+
+            <!-- Grid de Juegos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mb-16">
+                
+                <!-- Tarjeta VALORANT (Rojo) -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-red flex flex-col shadow-[0_0_20px_rgba(239,68,68,0.15)]">
+                    <div class="relative group cursor-pointer border-b border-red-500/50" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.valorant.jpeg" alt="Valorant" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/600x300/0f172a/ef4444?text=Valorant+Poster'">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                        </div>
                     </div>
-                    <span id="paymentStatus" class="text-[10px] font-bold text-orange-500 uppercase italic hidden">Pago parcial iniciado...</span>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-3xl font-black text-red-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(239,68,68,0.5);">Valorant (PC)</h3>
+                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                            Es un shooter táctico en primera persona. En este evento se jugará el modo <strong class="text-red-400">Swiftplay (5 vs 5)</strong>, el cual consiste en un duelo de equipos intenso y rápido con una duración de 15 a 20 minutos por partida. También se organizarán enfrentamientos en formato <strong class="text-red-400">1 vs 1</strong>.
+                        </p>
+                        <div class="bg-slate-800/80 border border-red-500/30 p-4 rounded-lg mb-6">
+                            <h4 class="text-red-400 font-bold uppercase text-sm mb-2 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                                Premios Asegurados
+                            </h4>
+                            <p class="text-white font-bold">1 vs 1: <span class="text-xl">100.000 COP</span></p>
+                            <p class="text-white font-bold">Equipos (5v5): <span class="text-xl">180.000 COP</span></p>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSco9CPXOPLArX3Bk_TS-GC8eVSn2iDC-2gjy56pHVXbxDgsxw/viewform?usp=header" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(239,68,68,0.6)]">
+                            Inscribirse a Valorant
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Tarjeta LoL (Azul) -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-blue flex flex-col shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+                    <div class="relative group cursor-pointer border-b border-blue-500/50" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.lol.jpeg" alt="League of Legends" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/600x300/0f172a/3b82f6?text=League+of+Legends+Poster'">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-3xl font-black text-blue-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(59,130,246,0.5);">League of Legends (PC)</h3>
+                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                            El MOBA competitivo por excelencia. En este torneo se jugará el clásico modo <strong class="text-blue-400">1 vs 1</strong>. Demuestra quién tiene las mejores mecánicas, el control total de la oleada de súbditos y la capacidad de conseguir la Primera Sangre, la primera torre o llegar a 100 súbditos.
+                        </p>
+                        <div class="bg-slate-800/80 border border-blue-500/30 p-4 rounded-lg mb-6">
+                            <h4 class="text-blue-400 font-bold uppercase text-sm mb-2 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                                Premio Asegurado
+                            </h4>
+                            <p class="text-white font-bold text-xl">100.000 COP</p>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-RQP_DG_oku8S0bmW49qYUiTJA9hbnCHzuKzxIC12oWzvcg/viewform?usp=header" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(59,130,246,0.6)]">
+                            Inscribirse a LoL
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Free Fire (Naranja) -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-orange flex flex-col shadow-[0_0_20px_rgba(249,115,22,0.15)]">
+                    <div class="relative group cursor-pointer border-b border-orange-500/50" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.free.jpeg" alt="Free Fire" class="w-full h-64 object-cover object-top" onerror="this.src='https://via.placeholder.com/600x300/0f172a/f97316?text=Free+Fire+Poster'">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-3xl font-black text-orange-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(249,115,22,0.5);">Free Fire (Celular)</h3>
+                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                            Lánzate a la isla, equipa tus mejores armas y sobrevive a tus oponentes. El torneo se disputará en formato <strong class="text-orange-400">Battle Royale individual</strong>. Gestiona tus recursos, asegura la zona segura y conviértete en el único sobreviviente (BOOYAH!).
+                        </p>
+                        <div class="bg-slate-800/80 border border-orange-500/30 p-4 rounded-lg mb-6">
+                            <h4 class="text-orange-400 font-bold uppercase text-sm mb-2 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                                Premio Asegurado
+                            </h4>
+                            <p class="text-white font-bold text-xl">80.000 COP</p>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScNc4K1jC-yNbF7FcxSXhmoJSy4h9RKa3KZelfsnekEsYBQSA/viewform?usp=header" target="_blank" class="block w-full text-center bg-orange-600 hover:bg-orange-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(249,115,22,0.6)]">
+                            Inscribirse a Free Fire
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta CoD Mobile (Verde) -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-green flex flex-col shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+                    <div class="relative group cursor-pointer border-b border-green-500/50" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.cod.jpeg" alt="Call of Duty Mobile" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/600x300/0f172a/22c55e?text=CoD+Mobile+Poster'">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-3xl font-black text-green-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(34,197,94,0.5);">CoD Mobile (Celular)</h3>
+                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                            Experimenta la acción pura y el combate táctico militar. El torneo se llevará a cabo en el modo <strong class="text-green-400">Battle Royale individual</strong>. Despliega tus clases, saquea el armamento definitivo y acaba con todos los rivales en el campo de batalla.
+                        </p>
+                        <div class="bg-slate-800/80 border border-green-500/30 p-4 rounded-lg mb-6">
+                            <h4 class="text-green-400 font-bold uppercase text-sm mb-2 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                                Premio Asegurado
+                            </h4>
+                            <p class="text-white font-bold text-xl">80.000 COP</p>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfU5CVRRv9pEPoxFWPYLv9OQ7sZAEbXsJcuQD1ZnN8KMOzHHA/viewform?usp=header" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(34,197,94,0.6)]">
+                            Inscribirse a CoD Mobile
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- POSTER GENERAL Y TRANSMISIÓN -->
+            <div class="flex items-center gap-4 mb-8 mt-12">
+                <div class="h-px bg-purple-500/50 flex-1"></div>
+                <h2 class="text-3xl font-black uppercase tracking-wider text-purple-400" style="text-shadow: 0 0 10px rgba(168,85,247,0.5);">Promoción y Transmisión</h2>
+                <div class="h-px bg-purple-500/50 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                
+                <!-- Poster General Gigante -->
+                <div class="bg-slate-800 p-4 rounded-xl border border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.2)]">
+                    <h4 class="text-center text-purple-300 font-bold uppercase tracking-wider mb-4 border-b border-purple-500/30 pb-2">Póster General del Evento</h4>
+                    <div class="aspect-auto bg-black rounded-lg overflow-hidden relative group cursor-pointer" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.general.jpeg" alt="Poster General" class="w-full h-auto object-contain max-h-[600px] mx-auto" onerror="this.src='https://via.placeholder.com/800x1000/000000/a855f7?text=Poster+General'">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+                            <span class="ml-3 font-bold text-white text-xl uppercase tracking-widest">Ver Completo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque de Streams -->
+                <div class="flex flex-col justify-center h-full gap-8">
+                    <div class="bg-slate-900/80 p-8 rounded-xl border border-slate-700 text-center shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-500 mx-auto mb-4 animate-pulse"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-wider mb-2">¡Sigue el torneo EN VIVO!</h3>
+                        <p class="text-slate-400 mb-8">Todos los enfrentamientos principales y las grandes finales serán transmitidas en directo. Apoya a tu favorito en los canales oficiales de SoftJuns.</p>
+                        
+                        <div class="flex flex-col gap-6">
+                            <!-- Botón KICK -->
+                            <a href="https://kick.com/softjuns" target="_blank" class="flex items-center justify-center gap-4 px-8 py-5 bg-[#53fc18]/10 border-2 border-[#53fc18] rounded-xl hover:bg-[#53fc18]/20 transition-all click-anim shadow-[0_0_15px_rgba(83,252,24,0.3)] hover:shadow-[0_0_25px_rgba(83,252,24,0.6)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#53fc18"><path d="M2.667 0H7.5v8H12v-2.667h5.333V0h4v5.333h-4V8H22v8h-4.667v2.667H12V24H7.5v-8H2.667V0z"/></svg>
+                                <span class="text-[#53fc18] font-black text-2xl tracking-widest uppercase">KICK</span>
+                            </a>
+
+                            <!-- Botón TWITCH -->
+                            <a href="https://www.twitch.tv/softjuns" target="_blank" class="flex items-center justify-center gap-4 px-8 py-5 bg-[#9146FF]/10 border-2 border-[#9146FF] rounded-xl hover:bg-[#9146FF]/20 transition-all click-anim shadow-[0_0_15px_rgba(145,70,255,0.3)] hover:shadow-[0_0_25px_rgba(145,70,255,0.6)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#9146FF"><path d="M2.149 0l-1.612 4.119v16.836h5.731v3.045h3.224l3.045-3.045h4.657l6.269-6.269v-14.686h-21.314zm19.164 13.612l-4.298 4.298h-4.657l-3.045 3.045v-3.045h-4.836v-15.045h16.836v10.746zm-5.015-6.985v5.373h-2.149v-5.373h2.149zm-5.373 0v5.373h-2.149v-5.373h2.149z"/></svg>
+                                <span class="text-[#9146FF] font-black text-2xl tracking-widest uppercase">TWITCH</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-        <aside class="w-80 bg-white border-l border-slate-200 flex flex-col z-30">
-            <div class="p-4 border-b border-slate-100 h-1/3 flex flex-col overflow-hidden">
-                <h2 class="font-bold text-slate-700 mb-2 flex items-center gap-2">🛒 Carrito</h2>
-                <div id="cartItems" class="flex-1 overflow-y-auto custom-scroll space-y-2"></div>
-            </div>
-
-            <div class="p-4 flex-1 border-t border-slate-100 bg-slate-50 flex flex-col overflow-hidden">
-                <div class="flex justify-between items-center mb-1">
-                    <h2 class="font-bold text-slate-700 text-[11px] uppercase tracking-tight">📜 Historial</h2>
-                    <div class="flex gap-2 items-center">
-                        <button id="btnRestoreHistory" class="text-orange-500 hover:text-orange-700 hidden" title="Recuperar historial borrado">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                        </button>
-                        <button id="btnExportPDF" class="text-blue-500 hover:text-blue-700" title="Exportar Reporte General">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        </button>
-                        <button id="btnClearHistory" class="text-red-400 hover:text-red-600" title="Borrar todo el historial">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2 mb-2">
-                    <div class="bg-green-100 p-2 rounded-lg border border-green-200">
-                        <p class="text-[8px] font-bold text-green-700 uppercase">Efectivo</p>
-                        <p id="totalEfectivoSum" class="font-black text-green-800 text-xs">$0</p>
-                    </div>
-                    <div class="bg-purple-100 p-2 rounded-lg border border-purple-200">
-                        <p class="text-[8px] font-bold text-purple-700 uppercase">Tarjeta</p>
-                        <p id="totalTarjetaSum" class="font-black text-purple-800 text-xs">$0</p>
-                    </div>
-                </div>
-                <div class="bg-blue-600 p-2 rounded-lg mb-2 flex justify-between items-center shadow-sm">
-                    <span class="text-[10px] font-bold text-white uppercase">Venta Total:</span>
-                    <span id="historyTotalSum" class="font-black text-white text-sm">$0</span>
-                </div>
-
-                <div id="salesHistory" class="flex-1 overflow-y-auto custom-scroll space-y-3 text-[10px]"></div>
-            </div>
-        </aside>
     </main>
 
-    <div id="configModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
-        <div class="bg-white p-6 rounded-2xl shadow-2xl w-80">
-            <h3 class="text-xl font-bold mb-4">Editar Producto</h3>
-            <div class="space-y-4">
-                <input type="text" id="editName" placeholder="Nombre" class="w-full p-2 border rounded-lg">
-                <input type="number" id="editPrice" placeholder="Precio" class="w-full p-2 border rounded-lg">
-            </div>
-            <div class="mt-6 flex flex-col gap-2">
-                <button id="saveConfig" class="bg-blue-600 text-white py-2 rounded-lg font-bold">Guardar</button>
-                <button id="deleteProduct" class="text-red-600 text-sm">Eliminar botón</button>
-                <button id="closeModal" class="text-slate-400 text-sm">Cancelar</button>
-            </div>
-        </div>
+    <!-- MODAL PARA AGRANDAR IMÁGENES -->
+    <div id="imageModal" class="hidden fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white hover:text-red-500 transition-colors bg-slate-900/50 rounded-full p-2 z-50" onclick="closeModal()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <img id="modalImage" src="" alt="Imagen Agrandada" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onclick="event.stopPropagation()">
     </div>
 
     <script>
-        let products = JSON.parse(localStorage.getItem('pos_products')) || [{ id: 1, name: "Medias Básicas", price: 5000 }];
-        let history = JSON.parse(localStorage.getItem('pos_history')) || [];
-        let cart = [];
-        let payments = []; 
-        let isEditMode = false;
-        let editingId = null;
-
-        const formatMoney = (v) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(v || 0);
-
-        function renderProducts(filter = "") {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
-            products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase())).forEach(p => {
-                const btn = document.createElement('button');
-                btn.className = `p-4 h-24 rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition shadow-sm w-full ${isEditMode ? 'border-orange-400 bg-orange-50 animate-pulse' : 'bg-white border-transparent hover:border-blue-500'}`;
-                btn.innerHTML = `<span class="font-bold text-slate-700 text-[11px] text-center line-clamp-2">${p.name}</span><span class="text-blue-600 font-bold text-[10px]">${formatMoney(p.price)}</span>`;
-                btn.onclick = () => isEditMode ? openConfig(p.id) : addToCart(p);
-                grid.appendChild(btn);
-            });
-            document.getElementById('productCounter').innerText = `${products.length} Botones`;
+        // --- FUNCIONES DEL MODAL DE IMÁGENES ---
+        function openImage(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            // Pequeño retraso para la transición de opacidad
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
         }
 
-        function addToCart(p) {
-            cart.push({...p, cartId: Date.now() + Math.random()});
-            updateUI();
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('opacity-0');
+            // Espera a que termine la animación antes de ocultar
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('modalImage').src = '';
+            }, 300);
         }
-
-        function removeFromCart(cartId) {
-            cart = cart.filter(item => item.cartId !== cartId);
-            updateUI();
-        }
-
-        function updateUI() {
-            const cartList = document.getElementById('cartItems');
-            cartList.innerHTML = cart.length ? cart.map(item => `
-                <div class="flex justify-between items-center bg-white p-2 rounded border border-slate-200 text-[11px]">
-                    <span class="font-bold truncate">${item.name}</span>
-                    <div class="flex items-center gap-2">
-                        <span class="text-blue-500">${formatMoney(item.price)}</span>
-                        <button onclick="removeFromCart(${item.cartId})" class="text-red-400">✕</button>
-                    </div>
-                </div>
-            `).join('') : '<p class="text-slate-400 text-center text-xs mt-4 italic">Carrito vacío</p>';
-
-            const cartTotal = cart.reduce((s, i) => s + i.price, 0);
-            const totalPagado = payments.reduce((s, p) => s + p.amount, 0);
-            const pendiente = Math.max(0, cartTotal - totalPagado);
-            document.getElementById('displayTotal').innerText = formatMoney(pendiente);
-            const abono = parseFloat(document.getElementById('inputPago').value) || 0;
-            document.getElementById('displayCambio').innerText = formatMoney(Math.max(0, abono - pendiente));
-            const status = document.getElementById('paymentStatus');
-            payments.length > 0 ? status.classList.remove('hidden') : status.classList.add('hidden');
-        }
-
-        function handlePayment(method) {
-            if (!cart.length) return;
-            const cartTotal = cart.reduce((s, i) => s + i.price, 0);
-            const totalPagado = payments.reduce((s, p) => s + p.amount, 0);
-            const pendiente = cartTotal - totalPagado;
-            let montoInput = parseFloat(document.getElementById('inputPago').value) || 0;
-            if (montoInput === 0) montoInput = pendiente;
-            payments.push({ amount: Math.min(montoInput, pendiente), method: method });
-            if (payments.reduce((s, p) => s + p.amount, 0) >= cartTotal - 1) { finalizeSale(); } else { document.getElementById('inputPago').value = ''; updateUI(); }
-        }
-
-        function finalizeSale() {
-            const dateInput = document.getElementById('manualDateTime').value;
-            const fechaObj = dateInput ? new Date(dateInput) : new Date();
-            const total = cart.reduce((s, i) => s + i.price, 0);
-            const resumenPagos = {};
-            payments.forEach(p => resumenPagos[p.method] = (resumenPagos[p.method] || 0) + p.amount);
-            const sale = {
-                id: Date.now(),
-                items: cart.map(i => ({name: i.name, price: i.price})),
-                total: total,
-                pagos: resumenPagos,
-                fechaFull: fechaObj.toLocaleString(),
-                fechaCorta: fechaObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            };
-            history = [sale, ...history];
-            localStorage.setItem('pos_history', JSON.stringify(history));
-            
-            cart = []; payments = [];
-            document.getElementById('inputPago').value = '';
-            document.getElementById('manualDateTime').value = '';
-            updateUI(); renderHistory();
-        }
-
-        function renderHistory() {
-            const container = document.getElementById('salesHistory');
-            const btnRestore = document.getElementById('btnRestoreHistory');
-            const backup = localStorage.getItem('pos_history_backup');
-
-            if (backup && backup !== "[]") {
-                btnRestore.classList.remove('hidden');
-            } else {
-                btnRestore.classList.add('hidden');
-            }
-
-            let totalE = 0, totalT = 0;
-            if (!history.length) {
-                container.innerHTML = '<p class="text-center text-slate-400 mt-2">Sin registros</p>';
-                document.getElementById('totalEfectivoSum').innerText = formatMoney(0);
-                document.getElementById('totalTarjetaSum').innerText = formatMoney(0);
-                document.getElementById('historyTotalSum').innerText = formatMoney(0);
-                return;
-            }
-
-            container.innerHTML = history.map(v => {
-                totalE += (v.pagos['Efectivo'] || 0);
-                totalT += (v.pagos['Tarjeta'] || 0);
-                return `
-                <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                    <div class="flex justify-between items-center pb-1 border-b mb-2">
-                        <span class="font-bold text-slate-400 text-[8px] uppercase">${v.fechaCorta}</span>
-                        <div class="flex gap-2">
-                            <button onclick="printReceipt(${v.id})" class="text-blue-400 hover:text-blue-600" title="Imprimir Recibo">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
-                            </button>
-                            <button onclick="removeHistoryItem(${v.id})" class="text-red-300 hover:text-red-500">✕</button>
-                        </div>
-                    </div>
-                    ${v.items.map(it => `<div class="flex justify-between text-[9px] text-slate-500"><span>${it.name}</span><span>${formatMoney(it.price)}</span></div>`).join('')}
-                    <div class="flex justify-between items-end mt-2 pt-2 border-t">
-                        <span class="text-[8px] font-bold text-blue-500">${Object.keys(v.pagos).join(' / ')}</span>
-                        <span class="font-black text-slate-900 text-sm">${formatMoney(v.total)}</span>
-                    </div>
-                </div>`;
-            }).join('');
-
-            document.getElementById('totalEfectivoSum').innerText = formatMoney(totalE);
-            document.getElementById('totalTarjetaSum').innerText = formatMoney(totalT);
-            document.getElementById('historyTotalSum').innerText = formatMoney(totalE + totalT);
-        }
-
-        // Nueva función para imprimir recibo individual
-        function printReceipt(id) {
-            const sale = history.find(h => h.id === id);
-            if (!sale) return;
-
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Estilo Sobrio y Profesional
-            doc.setFontSize(14);
-            doc.setFont(undefined, 'bold');
-            doc.setTextColor(0, 0, 0);
-            doc.text("ALMACÉN SOLOMEDIAS INTIMAS", 14, 20);
-            
-            doc.setFontSize(11);
-            doc.text("RECIBO DE CAJA", 14, 28);
-            
-            doc.setFontSize(10);
-            doc.setFont(undefined, 'normal');
-            doc.setTextColor(80, 80, 80);
-            doc.text(`Fecha: ${sale.fechaFull}`, 14, 35);
-            doc.text(`Recibo No: ${sale.id}`, 14, 40);
-
-            const itemsRows = sale.items.map(i => [i.name.toUpperCase(), formatMoney(i.price)]);
-
-            doc.autoTable({
-                startY: 45,
-                head: [['Producto', 'Precio']],
-                body: itemsRows,
-                theme: 'grid',
-                headStyles: { fillColor: [60, 60, 60], fontSize: 11 },
-                styles: { fontSize: 11, textColor: [40, 40, 40] },
-                columnStyles: {
-                    1: { halign: 'right' }
-                }
-            });
-
-            const finalY = doc.lastAutoTable.finalY + 10;
-            
-            doc.setFont(undefined, 'bold');
-            doc.text("TOTAL PAGADO:", 14, finalY);
-            doc.text(formatMoney(sale.total), 180, finalY, { align: 'right' });
-
-            doc.setFont(undefined, 'normal');
-            doc.setFontSize(9);
-            const metodos = Object.entries(sale.pagos).map(([m, a]) => `${m}: ${formatMoney(a)}`).join(' | ');
-            doc.text(`Método(s) de pago: ${metodos}`, 14, finalY + 7);
-
-            doc.text("Gracias por su compra.", 14, finalY + 20);
-
-            doc.save(`recibo_${sale.id}.pdf`);
-        }
-
-        document.getElementById('btnExportPDF').onclick = () => {
-            if (history.length === 0) return alert("No hay ventas para exportar.");
-
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            doc.setFontSize(16);
-            doc.setFont(undefined, 'bold');
-            doc.setTextColor(0, 0, 0);
-            doc.text("ALMACÉN SOLOMEDIAS INTIMAS", 14, 20);
-            
-            doc.setFontSize(12);
-            doc.text("REPORTE DE VENTAS - CUADRE DE CAJA", 14, 28);
-            
-            doc.setFontSize(10);
-            doc.setFont(undefined, 'normal');
-            doc.setTextColor(100, 100, 100);
-            doc.text(`Generado el: ${new Date().toLocaleString()}`, 14, 35);
-
-            let totalE = 0, totalT = 0;
-            const rows = [];
-            
-            history.forEach(v => {
-                const pagoE = (v.pagos['Efectivo'] || 0);
-                const pagoT = (v.pagos['Tarjeta'] || 0);
-                totalE += pagoE;
-                totalT += pagoT;
-                
-                const itemsList = v.items.map(i => `${i.name.toUpperCase()}  ${formatMoney(i.price)}`).join('\n');
-                
-                rows.push([
-                    v.fechaFull,
-                    itemsList,
-                    formatMoney(pagoE),
-                    formatMoney(pagoT),
-                    formatMoney(v.total)
-                ]);
-            });
-
-            doc.autoTable({
-                startY: 42,
-                head: [['Fecha / Hora', 'Productos y Precios Unitarios', 'Efectivo', 'Tarjeta', 'Total Venta']],
-                body: rows,
-                theme: 'grid',
-                headStyles: { 
-                    fillColor: [60, 60, 60], 
-                    fontSize: 11, 
-                    fontStyle: 'bold',
-                    halign: 'center'
-                },
-                styles: { 
-                    fontSize: 11, 
-                    cellPadding: 3,
-                    valign: 'top',
-                    textColor: [40, 40, 40]
-                },
-                columnStyles: {
-                    0: { cellWidth: 35, fontSize: 10 },
-                    1: { cellWidth: 'auto' }, 
-                    2: { halign: 'right', cellWidth: 28 },
-                    3: { halign: 'right', cellWidth: 28 },
-                    4: { halign: 'right', fontStyle: 'bold', cellWidth: 28 }
-                }
-            });
-
-            const finalY = doc.lastAutoTable.finalY + 15;
-            
-            doc.setFontSize(12);
-            doc.setFont(undefined, 'bold');
-            doc.setTextColor(0, 0, 0);
-            doc.text("RESUMEN DE CIERRE", 14, finalY);
-            
-            doc.autoTable({
-                startY: finalY + 4,
-                body: [
-                    ['Total en Efectivo:', formatMoney(totalE)],
-                    ['Total en Tarjeta:', formatMoney(totalT)],
-                    ['TOTAL GENERAL DE VENTAS:', formatMoney(totalE + totalT)]
-                ],
-                theme: 'plain',
-                styles: { fontSize: 11, cellPadding: 2 },
-                columnStyles: { 
-                    0: { fontStyle: 'bold', cellWidth: 100 },
-                    1: { fontStyle: 'bold', halign: 'right' }
-                }
-            });
-
-            doc.setFontSize(9);
-            doc.setFont(undefined, 'italic');
-            doc.text("Documento contable interno para propósitos de cuadre.", 14, doc.internal.pageSize.height - 10);
-
-            doc.save(`cuadre_profesional_${new Date().toISOString().split('T')[0]}.pdf`);
-        };
-
-        function removeHistoryItem(id) {
-            if(confirm("¿Eliminar registro?")) {
-                localStorage.setItem('pos_history_backup', JSON.stringify(history));
-                history = history.filter(h => h.id !== id);
-                localStorage.setItem('pos_history', JSON.stringify(history));
-                renderHistory();
-            }
-        }
-
-        document.getElementById('btnClearHistory').onclick = () => {
-            if(confirm("¿Borrar historial actual? Podrás recuperarlo con el botón naranja.")) {
-                localStorage.setItem('pos_history_backup', JSON.stringify(history));
-                history = [];
-                localStorage.setItem('pos_history', "[]");
-                renderHistory();
-            }
-        };
-
-        document.getElementById('btnRestoreHistory').onclick = () => {
-            const backup = localStorage.getItem('pos_history_backup');
-            if (backup) {
-                history = JSON.parse(backup);
-                localStorage.setItem('pos_history', backup);
-                localStorage.removeItem('pos_history_backup');
-                renderHistory();
-            }
-        };
-
-        document.getElementById('btnManualAdd').onclick = () => {
-            const p = parseFloat(document.getElementById('inputManualPrice').value);
-            const n = document.getElementById('inputManualName').value || "Venta Rápida";
-            const q = parseInt(document.getElementById('inputManualQty').value) || 1;
-            
-            if (p > 0) { 
-                for(let i = 0; i < q; i++) {
-                    addToCart({ name: n, price: p }); 
-                }
-                document.getElementById('inputManualPrice').value = ''; 
-                document.getElementById('inputManualName').value = ''; 
-                document.getElementById('inputManualQty').value = '1';
-            }
-        };
-        
-        document.getElementById('toggleEdit').onclick = () => { isEditMode = !isEditMode; document.getElementById('toggleEdit').innerText = isEditMode ? "Listo" : "Configurar Botones"; renderProducts(); };
-        document.getElementById('btnAddProduct').onclick = () => { const n = { id: Date.now(), name: "Nuevo Producto", price: 0 }; products.push(n); renderProducts(); openConfig(n.id); };
-        function openConfig(id) { editingId = id; const p = products.find(x => x.id === id); document.getElementById('editName').value = p.name; document.getElementById('editPrice').value = p.price; document.getElementById('configModal').classList.remove('hidden'); }
-        document.getElementById('saveConfig').onclick = () => { products = products.map(p => p.id === editingId ? {...p, name: document.getElementById('editName').value, price: parseFloat(document.getElementById('editPrice').value) || 0} : p); localStorage.setItem('pos_products', JSON.stringify(products)); document.getElementById('configModal').classList.add('hidden'); renderProducts(); };
-        document.getElementById('deleteProduct').onclick = () => { products = products.filter(p => p.id !== editingId); localStorage.setItem('pos_products', JSON.stringify(products)); document.getElementById('configModal').classList.add('hidden'); renderProducts(); };
-        document.getElementById('closeModal').onclick = () => document.getElementById('configModal').classList.add('hidden');
-        document.getElementById('searchBox').oninput = (e) => renderProducts(e.target.value);
-        document.getElementById('inputPago').oninput = updateUI;
-        document.getElementById('btnLimpiar').onclick = () => { cart = []; payments = []; updateUI(); };
-
-        renderProducts(); renderHistory(); updateUI();
     </script>
 </body>
 </html>

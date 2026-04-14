@@ -87,27 +87,27 @@
             </div>
 
             <!-- JUEGOS DEL TORNEO -->
-            <div class="flex items-center gap-4 mb-8">
+            <div class="flex items-center gap-4 mb-10">
                 <div class="h-px bg-sky-500/50 flex-1"></div>
                 <h2 class="text-3xl font-black uppercase neon-text tracking-wider">Juegos del Torneo</h2>
                 <div class="h-px bg-sky-500/50 flex-1"></div>
             </div>
 
-            <!-- Grid de Juegos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mb-16">
+            <!-- Grid de Juegos (Columna Única para diseño horizontal) -->
+            <div class="grid grid-cols-1 gap-10 mb-16 max-w-6xl mx-auto">
                 
                 <!-- Tarjeta VALORANT (Rojo) -->
-                <div class="bg-slate-900 rounded-xl overflow-hidden neon-red flex flex-col shadow-[0_0_20px_rgba(239,68,68,0.15)]">
-                    <div class="relative group cursor-pointer border-b border-red-500/50" onclick="openImage(this.querySelector('img').src)">
-                        <img src="imagenes pag/poster.valorant.jpeg" alt="Valorant" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/600x300/0f172a/ef4444?text=Valorant+Poster'">
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-red flex flex-col md:flex-row shadow-[0_0_20px_rgba(239,68,68,0.15)]">
+                    <div class="relative group cursor-pointer border-b md:border-b-0 md:border-r border-red-500/50 md:w-2/5 lg:w-1/3 flex-shrink-0 bg-[#070b14] flex items-center justify-center p-4" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.valorant.jpeg" alt="Valorant" class="w-full h-72 md:h-full object-contain" onerror="this.src='https://via.placeholder.com/400x600/0f172a/ef4444?text=Valorant+Poster'">
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
-                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest text-center">Agrandar<br>Poster</span>
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
+                    <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
                         <h3 class="text-3xl font-black text-red-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(239,68,68,0.5);">Valorant (PC)</h3>
-                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                        <p class="text-slate-300 text-base lg:text-lg mb-6 flex-1 leading-relaxed">
                             Es un shooter táctico en primera persona. En este evento se jugará el modo <strong class="text-red-400">Swiftplay (5 vs 5)</strong>, el cual consiste en un duelo de equipos intenso y rápido con una duración de 15 a 20 minutos por partida. También se organizarán enfrentamientos en formato <strong class="text-red-400">1 vs 1</strong>.
                         </p>
                         <div class="bg-slate-800/80 border border-red-500/30 p-4 rounded-lg mb-6">
@@ -115,8 +115,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                                 Premios Asegurados
                             </h4>
-                            <p class="text-white font-bold">1 vs 1: <span class="text-xl">100.000 COP</span></p>
-                            <p class="text-white font-bold">Equipos (5v5): <span class="text-xl">180.000 COP</span></p>
+                            <p class="text-white font-bold text-lg">1 vs 1: <span class="text-xl">100.000 COP</span></p>
+                            <p class="text-white font-bold text-lg">Equipos (5v5): <span class="text-xl">180.000 COP</span></p>
                         </div>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSco9CPXOPLArX3Bk_TS-GC8eVSn2iDC-2gjy56pHVXbxDgsxw/viewform?usp=header" target="_blank" class="block w-full text-center bg-red-600 hover:bg-red-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(239,68,68,0.6)]">
                             Inscribirse a Valorant
@@ -125,17 +125,17 @@
                 </div>
 
                 <!-- Tarjeta LoL (Azul) -->
-                <div class="bg-slate-900 rounded-xl overflow-hidden neon-blue flex flex-col shadow-[0_0_20px_rgba(59,130,246,0.15)]">
-                    <div class="relative group cursor-pointer border-b border-blue-500/50" onclick="openImage(this.querySelector('img').src)">
-                        <img src="imagenes pag/poster.lol.jpeg" alt="League of Legends" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/600x300/0f172a/3b82f6?text=League+of+Legends+Poster'">
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-blue flex flex-col md:flex-row shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+                    <div class="relative group cursor-pointer border-b md:border-b-0 md:border-r border-blue-500/50 md:w-2/5 lg:w-1/3 flex-shrink-0 bg-[#070b14] flex items-center justify-center p-4" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.lol.jpeg" alt="League of Legends" class="w-full h-72 md:h-full object-contain" onerror="this.src='https://via.placeholder.com/400x600/0f172a/3b82f6?text=League+of+Legends+Poster'">
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
-                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest text-center">Agrandar<br>Poster</span>
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
+                    <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
                         <h3 class="text-3xl font-black text-blue-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(59,130,246,0.5);">League of Legends (PC)</h3>
-                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                        <p class="text-slate-300 text-base lg:text-lg mb-6 flex-1 leading-relaxed">
                             El MOBA competitivo por excelencia. En este torneo se jugará el clásico modo <strong class="text-blue-400">1 vs 1</strong>. Demuestra quién tiene las mejores mecánicas, el control total de la oleada de súbditos y la capacidad de conseguir la Primera Sangre, la primera torre o llegar a 100 súbditos.
                         </p>
                         <div class="bg-slate-800/80 border border-blue-500/30 p-4 rounded-lg mb-6">
@@ -143,7 +143,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                                 Premio Asegurado
                             </h4>
-                            <p class="text-white font-bold text-xl">100.000 COP</p>
+                            <p class="text-white font-bold text-lg">1 vs 1: <span class="text-xl">100.000 COP</span></p>
                         </div>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-RQP_DG_oku8S0bmW49qYUiTJA9hbnCHzuKzxIC12oWzvcg/viewform?usp=header" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(59,130,246,0.6)]">
                             Inscribirse a LoL
@@ -152,17 +152,17 @@
                 </div>
 
                 <!-- Tarjeta Free Fire (Naranja) -->
-                <div class="bg-slate-900 rounded-xl overflow-hidden neon-orange flex flex-col shadow-[0_0_20px_rgba(249,115,22,0.15)]">
-                    <div class="relative group cursor-pointer border-b border-orange-500/50" onclick="openImage(this.querySelector('img').src)">
-                        <img src="imagenes pag/poster.free.jpeg" alt="Free Fire" class="w-full h-64 object-cover object-top" onerror="this.src='https://via.placeholder.com/600x300/0f172a/f97316?text=Free+Fire+Poster'">
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-orange flex flex-col md:flex-row shadow-[0_0_20px_rgba(249,115,22,0.15)]">
+                    <div class="relative group cursor-pointer border-b md:border-b-0 md:border-r border-orange-500/50 md:w-2/5 lg:w-1/3 flex-shrink-0 bg-[#070b14] flex items-center justify-center p-4" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.free.jpeg" alt="Free Fire" class="w-full h-72 md:h-full object-contain" onerror="this.src='https://via.placeholder.com/400x600/0f172a/f97316?text=Free+Fire+Poster'">
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
-                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest text-center">Agrandar<br>Poster</span>
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
+                    <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
                         <h3 class="text-3xl font-black text-orange-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(249,115,22,0.5);">Free Fire (Celular)</h3>
-                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                        <p class="text-slate-300 text-base lg:text-lg mb-6 flex-1 leading-relaxed">
                             Lánzate a la isla, equipa tus mejores armas y sobrevive a tus oponentes. El torneo se disputará en formato <strong class="text-orange-400">Battle Royale individual</strong>. Gestiona tus recursos, asegura la zona segura y conviértete en el único sobreviviente (BOOYAH!).
                         </p>
                         <div class="bg-slate-800/80 border border-orange-500/30 p-4 rounded-lg mb-6">
@@ -170,7 +170,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                                 Premio Asegurado
                             </h4>
-                            <p class="text-white font-bold text-xl">80.000 COP</p>
+                            <p class="text-white font-bold text-lg">Battle Royale: <span class="text-xl">80.000 COP</span></p>
                         </div>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLScNc4K1jC-yNbF7FcxSXhmoJSy4h9RKa3KZelfsnekEsYBQSA/viewform?usp=header" target="_blank" class="block w-full text-center bg-orange-600 hover:bg-orange-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(249,115,22,0.6)]">
                             Inscribirse a Free Fire
@@ -179,17 +179,17 @@
                 </div>
 
                 <!-- Tarjeta CoD Mobile (Verde) -->
-                <div class="bg-slate-900 rounded-xl overflow-hidden neon-green flex flex-col shadow-[0_0_20px_rgba(34,197,94,0.15)]">
-                    <div class="relative group cursor-pointer border-b border-green-500/50" onclick="openImage(this.querySelector('img').src)">
-                        <img src="imagenes pag/poster.cod.jpeg" alt="Call of Duty Mobile" class="w-full h-64 object-cover" onerror="this.src='https://via.placeholder.com/600x300/0f172a/22c55e?text=CoD+Mobile+Poster'">
+                <div class="bg-slate-900 rounded-xl overflow-hidden neon-green flex flex-col md:flex-row shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+                    <div class="relative group cursor-pointer border-b md:border-b-0 md:border-r border-green-500/50 md:w-2/5 lg:w-1/3 flex-shrink-0 bg-[#070b14] flex items-center justify-center p-4" onclick="openImage(this.querySelector('img').src)">
+                        <img src="imagenes pag/poster.cod.jpeg" alt="Call of Duty Mobile" class="w-full h-72 md:h-full object-contain" onerror="this.src='https://via.placeholder.com/400x600/0f172a/22c55e?text=CoD+Mobile+Poster'">
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
-                            <span class="ml-2 font-bold text-white uppercase tracking-widest">Agrandar Poster</span>
+                            <span class="ml-2 font-bold text-white uppercase tracking-widest text-center">Agrandar<br>Poster</span>
                         </div>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
+                    <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
                         <h3 class="text-3xl font-black text-green-500 uppercase tracking-widest mb-3" style="text-shadow: 0 0 10px rgba(34,197,94,0.5);">CoD Mobile (Celular)</h3>
-                        <p class="text-slate-300 text-base mb-6 flex-1 leading-relaxed">
+                        <p class="text-slate-300 text-base lg:text-lg mb-6 flex-1 leading-relaxed">
                             Experimenta la acción pura y el combate táctico militar. El torneo se llevará a cabo en el modo <strong class="text-green-400">Battle Royale individual</strong>. Despliega tus clases, saquea el armamento definitivo y acaba con todos los rivales en el campo de batalla.
                         </p>
                         <div class="bg-slate-800/80 border border-green-500/30 p-4 rounded-lg mb-6">
@@ -197,7 +197,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                                 Premio Asegurado
                             </h4>
-                            <p class="text-white font-bold text-xl">80.000 COP</p>
+                            <p class="text-white font-bold text-lg">Battle Royale: <span class="text-xl">80.000 COP</span></p>
                         </div>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfU5CVRRv9pEPoxFWPYLv9OQ7sZAEbXsJcuQD1ZnN8KMOzHHA/viewform?usp=header" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-500 text-white font-black py-4 px-4 rounded transition-colors uppercase tracking-widest click-anim shadow-[0_0_15px_rgba(34,197,94,0.6)]">
                             Inscribirse a CoD Mobile
@@ -219,7 +219,7 @@
                 <!-- Poster General Gigante -->
                 <div class="bg-slate-800 p-4 rounded-xl border border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.2)]">
                     <h4 class="text-center text-purple-300 font-bold uppercase tracking-wider mb-4 border-b border-purple-500/30 pb-2">Póster General del Evento</h4>
-                    <div class="aspect-auto bg-black rounded-lg overflow-hidden relative group cursor-pointer" onclick="openImage(this.querySelector('img').src)">
+                    <div class="aspect-auto bg-[#070b14] rounded-lg overflow-hidden relative group cursor-pointer p-4" onclick="openImage(this.querySelector('img').src)">
                         <img src="imagenes pag/poster.general.jpeg" alt="Poster General" class="w-full h-auto object-contain max-h-[600px] mx-auto" onerror="this.src='https://via.placeholder.com/800x1000/000000/a855f7?text=Poster+General'">
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
@@ -260,7 +260,7 @@
         <button class="absolute top-6 right-6 text-white hover:text-red-500 transition-colors bg-slate-900/50 rounded-full p-2 z-50" onclick="closeModal()">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
-        <img id="modalImage" src="" alt="Imagen Agrandada" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+        <img id="modalImage" src="" alt="Imagen Agrandada" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl neon-border" onclick="event.stopPropagation()">
     </div>
 
     <script>
